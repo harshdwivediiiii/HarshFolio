@@ -3,7 +3,7 @@ import React from 'react'
 
 const ProjectPage = () => {
   return (
-    <div>
+    <div  className="container mt-24 mx-auto px-12 py-4">
       <ProjectsSection/>
     </div>
   )
