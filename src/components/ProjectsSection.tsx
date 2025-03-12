@@ -12,7 +12,7 @@ const projectsData = [
     description: "Welcome to my project showcase! 🚀 Here, you'll find a collection of my work, ranging from AI-driven applications to full-stack web solutions. Each project reflects my passion for building efficient, scalable, and user-friendly products.I love tackling complex problems, whether it's creating decentralized platforms, developing intelligent systems, or designing seamless UI/UX experiences. Check out my projects below and feel free to explore the code, demos, and case studies!",
     image: "/images/projects/1.png", 
     tag: ["All", "Web"], 
-    gitUrl: "/", 
+    gitUrl: "https://github.com/harshdwivediiiii/HarshFolio", 
     previewUrl: "/" 
   },
   { 
