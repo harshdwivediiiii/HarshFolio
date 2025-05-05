@@ -1,20 +1,28 @@
 export interface ExperienceType {
-    title: string;
-    company_name: string;
-    icon: string;
-    iconBg: string;
-    date: string;
-    points: string[];
-  }
-  
+  title: string;
+  company_name: string;
+  icon: string;
+  iconBg: string;
+  date: string;
+  points: string[];
+  type?: "Open Source" | "Ambassador" | "Internship" | "Freelance" | "Job"; 
+  location?: string;
+  link?: string;
+  techStack?: string[];
+  badge?: string;
+}
 
 export const experiences: ExperienceType[] = [
-{
+  {
     title: "Open Source Contributor",
     company_name: "Social Winter of Code",
-    icon: "/public/SWOC_W_Black.png",
+    icon: "/SWOC_W_Black.png",
     iconBg: "#E6DEDD",
     date: "November 2024 - February 2025",
+    type: "Open Source",
+    location: "Remote",
+    link: "https://swoc.tech",
+    techStack: ["React", "Node.js", "GitHub"],
     points: [
       "Contributed to multiple open-source repositories during the program.",
       "Raised meaningful PRs and fixed major bugs in React and Node.js-based projects.",
@@ -24,9 +32,13 @@ export const experiences: ExperienceType[] = [
   {
     title: "Campus Ambassador",
     company_name: "GirlScript Summer of Code",
-    icon: "/public/GS_logo_Black.svg",
-    iconBg: "#E6DEDD",
+    icon: "/GS_logo_Black.svg",
+    iconBg: "dark:bg-black  #E6DEDD",
     date: "September 2024 - November 2024",
+    type: "Ambassador",
+    location: "Remote",
+    link: "https://gssoc.girlscript.tech",
+    techStack: ["Community", "Outreach", "Mentoring"],
     points: [
       "Promoted GirlScript Summer of Code across campuses and online communities.",
       "Organized informational sessions and onboarded participants.",

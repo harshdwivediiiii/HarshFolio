@@ -2,11 +2,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import NavLink from "./NavLink";
-import { Menu, Info, Folder, Mail,Search, HomeIcon } from "lucide-react";
+import { Menu, Info, Folder, Mail,Search, HomeIcon} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { ModeToggle } from "./mode-toggle"; // Import your ModeToggle component
 import { useTheme } from "next-themes"; // Import useTheme
+import ModeToggle from "./mode-toggle";
 
 type NavLinkItem = {
   title: string;
@@ -37,6 +37,7 @@ const navLinks: NavLinkItem[] = [
   },
 ];
 
+
 const Navbar: React.FC = () => {
   const { theme } = useTheme(); // Get the current theme
   const [searchQuery, setSearchQuery] = useState("");
@@ -53,7 +54,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 ${theme === 'light' ? 'bg-white' : 'bg-[#121212]'}`}>
+    <nav className={`fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
       <div className={`flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
         <Link
           href={"/"}

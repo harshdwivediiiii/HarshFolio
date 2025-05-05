@@ -7,7 +7,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 
 export default function Home() {
   return (
-    <div className="container mt-24 mx-auto px-12 py-4">
+    <div className="container mt-24 mx-auto px-12 py-4 dark:bg-black bg-white dark:text-white text-black">
       <HeroSection />
       <AboutSection />
       <Experience />
