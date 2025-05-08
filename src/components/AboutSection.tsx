@@ -136,7 +136,7 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <section className="text-gray-700 dark:text-white bg-gray-100 dark:bg-black py-12" id="about">
+    <section className="text-gray-700 dark:text-white bg-white dark:bg-black py-12" id="about">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
         <Image src="/images/about-image.png" width={500} height={500} alt="About Me" />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">

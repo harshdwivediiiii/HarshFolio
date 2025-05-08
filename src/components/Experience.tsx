@@ -11,6 +11,23 @@ import { motion } from "framer-motion";
 import "react-vertical-timeline-component/style.min.css";
 import { experiences, ExperienceType } from "@/constants/Index";
 
+// ✅ Lucide Icons
+import { ExternalLink, MapPin, Star } from "lucide-react";
+import Link from "next/link";
+
+// ✅ Typewriter effect (optional basic variant)
+const textVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.05,
+      duration: 0.4,
+    },
+  }),
+};
+
 const Experience = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -21,15 +38,21 @@ const Experience = () => {
 
   if (!mounted) return null;
 
+  const headingText = "Experience";
+
   return (
     <section className="py-10">
+      {/* 🔠 Animated Heading */}
       <motion.h2
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl font-bold text-center mb-10"
+        className="text-3xl font-bold text-center mb-10 flex justify-center gap-1"
+        initial="hidden"
+        animate="visible"
       >
-        Experience
+        {headingText.split("").map((char, i) => (
+          <motion.span key={i} custom={i} variants={textVariants}>
+            {char}
+          </motion.span>
+        ))}
       </motion.h2>
 
       <VerticalTimeline>
@@ -56,7 +79,7 @@ const Experience = () => {
                   alt={exp.company_name}
                   width={40}
                   height={40}
-                  className={`object-contain ${theme === "dark" ? "invert" : ""}`}
+                  className={`object-contain `}
                 />
               </div>
             }
@@ -64,15 +87,15 @@ const Experience = () => {
             <div className="space-y-2">
               <h3 className="text-xl font-semibold">{exp.title}</h3>
 
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                 {exp.link ? (
                   <a
                     href={exp.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-blue-500"
+                    className="underline hover:text-blue-500 flex items-center gap-1"
                   >
-                    {exp.company_name}
+                    {exp.company_name} <ExternalLink size={14} />
                   </a>
                 ) : (
                   exp.company_name
@@ -80,16 +103,28 @@ const Experience = () => {
               </p>
 
               {exp.location && (
-                <p className="text-sm text-gray-400">{exp.location}</p>
+                <p className="text-sm text-gray-400 flex items-center gap-1">
+                  <MapPin size={14} /> {exp.location}
+                </p>
               )}
-
               {exp.badge && (
-                <span className="inline-block bg-indigo-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                  {exp.badge}
-                </span>
-              )}
-
-              <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+                 <Link 
+                 href={exp.badge.link}
+                 target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300 hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-lg"
+  >
+    <Star size={12} className="text-yellow-500 transition-transform duration-300 group-hover:rotate-12" />
+    <Image
+      src={exp.badge.image}
+      alt="Badge"
+      width={200}
+      height={40}
+      className="transition-transform duration-300 hover:scale-105"
+    />
+  </Link>
+)}
+  <ul className="list-disc list-inside space-y-1 text-sm mt-2">
                 {exp.points.map((point, idx) => (
                   <li key={idx}>{point}</li>
                 ))}

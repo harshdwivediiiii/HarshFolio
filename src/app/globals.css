@@ -124,3 +124,12 @@
     @apply bg-background text-foreground;
   }
 }
+/* globals.css or another global stylesheet */
+.vertical-timeline::before {
+  background: #000000 !important; /* Black line */
+}
+
+.dark .vertical-timeline::before {
+  background: #fff !important; /* White line for dark mode */
+}
+
