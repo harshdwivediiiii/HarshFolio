@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import NavLink from "./NavLink";
-import { Menu, Info, Folder, Mail,Search, HomeIcon} from "lucide-react";
+import { Menu, Info, Folder, Mail,Search, HomeIcon, Briefcase, PictureInPicture2} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useTheme } from "next-themes"; // Import useTheme
@@ -35,6 +35,16 @@ const navLinks: NavLinkItem[] = [
     path: "/contact",
     icon: <Mail className="w-5 h-5" />,
   },
+  {
+    title: "Experience",
+    path: "/experience",
+    icon: <Briefcase className="w-5 h-5" />,
+  },
+  {
+    title: "Gallery",
+    path: "/gallery",
+    icon: <PictureInPicture2 className="w-5 h-5" />,
+  }
 ];
 
 

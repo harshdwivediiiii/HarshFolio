@@ -12,7 +12,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { experiences, ExperienceType } from "@/constants/Index";
 
 // ✅ Lucide Icons
-import { ExternalLink, MapPin, Star } from "lucide-react";
+import { Briefcase, Building, ExternalLink, MapPin, Star } from "lucide-react";
 import Link from "next/link";
 
 // ✅ Typewriter effect (optional basic variant)
@@ -40,6 +40,7 @@ const Experience = () => {
 
   const headingText = "Experience";
 
+
   return (
     <section className="py-10">
       {/* 🔠 Animated Heading */}
@@ -48,6 +49,7 @@ const Experience = () => {
         initial="hidden"
         animate="visible"
       >
+        <Briefcase  size={28} className="text-black dark:text-white" />
         {headingText.split("").map((char, i) => (
           <motion.span key={i} custom={i} variants={textVariants}>
             {char}
@@ -85,8 +87,7 @@ const Experience = () => {
             }
           >
             <div className="space-y-2">
-              <h3 className="text-xl font-semibold">{exp.title}</h3>
-
+             <h3 className="text-xl font-semibold flex items-center gap-2"> <Building size={18} /> {exp.title}</h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                 {exp.link ? (
                   <a
