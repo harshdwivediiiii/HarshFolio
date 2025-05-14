@@ -78,3 +78,14 @@ export const experiences: ExperienceType[] = [
     },
   },
 ];
+export const SliderImages = [
+  "/journey/1.png",
+  "/journey/2.png",
+  "/journey/3.png",
+  "/journey/4.png",
+  "/journey/5.png",
+  "/journey/6.png",
+  "/journey/7.png",
+  "/journey/8.png",
+  "/journey/9.png",
+]
