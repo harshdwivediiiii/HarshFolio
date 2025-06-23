@@ -51,6 +51,15 @@ const projectsData = [
     gitUrl: "https://github.com/harshdwivediiiii/Foodfly", 
     previewUrl: "https://foodfly-blue.vercel.app" 
   },
+  {
+    id: 6,
+    title: "Pathfinder AI",
+    description: "Pathfinder AI is an AI-based career path guidance tool that analyzes your skills, interests, and personality traits to provide personalized career recommendations. Built using React, AI/ML and supported by intelligent algorithms, it offers users helpful insights, actionable next steps, and tailored career roadmaps.",
+    image: "/images/projects/6.png",
+    tag: ["All", "AI", "Web"],
+    gitUrl: "https://github.com/harshdwivediiiii/pathfinder-ai",
+    previewUrl: "https://pathfinder-ai-auta.vercel.app"
+  }
 ];
 const ProjectsSection = () => {
   const { theme, systemTheme } = useTheme();

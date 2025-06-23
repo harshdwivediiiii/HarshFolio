@@ -43,7 +43,6 @@ const Experience = () => {
 
   return (
     <section className="py-10">
-      {/* 🔠 Animated Heading */}
       <motion.h2
         className="text-3xl font-bold text-center mb-10 flex justify-center gap-1"
         initial="hidden"
