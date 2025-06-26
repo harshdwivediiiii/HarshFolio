@@ -59,6 +59,16 @@ const projectsData = [
     tag: ["All", "AI", "Web"],
     gitUrl: "https://github.com/harshdwivediiiii/pathfinder-ai",
     previewUrl: "https://pathfinder-ai-auta.vercel.app"
+  },
+{
+    id: 7,
+    title: "NeuroFunds AI",
+    description:
+      "NeuroFunds AI is an all-in-one, AI-powered personal-finance toolkit. Built with Next.js, Tailwind, Prisma, Supabase, and Google Gemini, it delivers secure banking-grade infrastructure, real-time background jobs, and ML-driven spending insights. Features include custom Clerk onboarding, Arcjet threat protection, 3-D UI flourishes, and one-click Vercel deployment.",
+    image: "/images/projects/7.png",           // update if you use a different file
+    tag: ["All", "AI", "Web"],
+    gitUrl: "https://github.com/harshdwivediiiii/neurofunds-ai",
+    previewUrl: "https://neurofunds-ai-g7n7.vercel.app/"
   }
 ];
 const ProjectsSection = () => {
