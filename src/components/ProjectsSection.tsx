@@ -59,13 +59,24 @@ const projectsData = [
     tag: ["All", "AI", "Web"],
     gitUrl: "https://github.com/harshdwivediiiii/pathfinder-ai",
     previewUrl: "https://pathfinder-ai-auta.vercel.app"
+  },
+  {
+    id: 7,
+    title: "NeuroFunds AI",
+    description:
+      "NeuroFunds AI is an all-in-one, AI-powered personal-finance toolkit. Built with Next.js, Tailwind, Prisma, Supabase, and Google Gemini, it delivers secure banking-grade infrastructure, real-time background jobs, and ML-driven spending insights. Features include custom Clerk onboarding, Arcjet threat protection, 3-D UI flourishes, and one-click Vercel deployment.",
+    image: "/images/projects/7.png",
+    tag: ["All", "AI", "Web"],
+    gitUrl: "https://github.com/harshdwivediiiii/neurofunds-ai",
+    previewUrl: "https://neurofunds-ai-g7n7.vercel.app/"
   }
 ];
+
 const ProjectsSection = () => {
   const { theme, systemTheme } = useTheme();
   const [currentTheme, setCurrentTheme] = useState("light");
   const [tag, setTag] = useState("All");
-  const ref = useRef(null);
+  const ref = useRef<HTMLUListElement>(null);
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
@@ -78,19 +89,52 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects">
-      <h2 suppressHydrationWarning className={`text-center text-4xl font-bold mt-4 mb-8 md:mb-12 ${currentTheme === "dark" ? "text-white" : "text-black"}`}>
+      <h2 
+        suppressHydrationWarning 
+        className={`text-center text-3xl sm:text-4xl font-bold mt-4 mb-8 md:mb-12 ${
+          currentTheme === "dark" ? "text-white" : "text-black"
+        }`}
+      >
         My Projects
       </h2>
-      <div className={`flex flex-row justify-center items-center gap-2 py-6 ${currentTheme === "dark" ? "text-white" : "text-black"}`}>
+      {/* Tags */}
+      <div className={`flex flex-wrap justify-center items-center gap-2 py-6 ${currentTheme === "dark" ? "text-black" : "text-white" }`}>
         <ProjectTag onClick={() => setTag("All")} name="All" isSelected={tag === "All"} />
         <ProjectTag onClick={() => setTag("Web")} name="Web" isSelected={tag === "Web"} />
         <ProjectTag onClick={() => setTag("Mobile")} name="Mobile" isSelected={tag === "Mobile"} />
         <ProjectTag onClick={() => setTag("AI")} name="AI" isSelected={tag === "AI"} />
       </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+      {/* Projects List */}
+      <ul 
+        ref={ref}
+        className="
+          grid 
+          grid-cols-1 
+          sm:grid-cols-2 
+          md:grid-cols-3 
+          gap-8 
+          md:gap-12 
+          px-4
+          w-full
+          max-w-7xl
+          mx-auto
+        "
+      >
         {filteredProjects.map((project, index) => (
-          <motion.li key={project.id} initial={{ y: 50, opacity: 0 }} animate={isInView ? { y: 0, opacity: 1 } : {}} transition={{ duration: 0.3, delay: index * 0.4 }}>
-            <ProjectCard title={project.title} description={project.description} imgUrl={project.image} gitUrl={project.gitUrl} previewUrl={project.previewUrl} />
+          <motion.li
+            key={project.id}
+            initial={{ y: 50, opacity: 0 }}
+            animate={isInView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.3, delay: index * 0.15 }}
+            className="flex"
+          >
+            <ProjectCard 
+              title={project.title} 
+              description={project.description} 
+              imgUrl={project.image} 
+              gitUrl={project.gitUrl} 
+              previewUrl={project.previewUrl} 
+            />
           </motion.li>
         ))}
       </ul>

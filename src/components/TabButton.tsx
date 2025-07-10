@@ -27,7 +27,7 @@ const TabButton: React.FC<TabButtonProps> = ({
   children,
   icon,
   tooltip,
-  activeColor = "text-black dark:text-white",
+  activeColor = "text-white dark:text-black",
   inactiveColor = "text-[#ADB7BE] dark:text-gray-400",
   disabled = false,
 }) => {
@@ -44,7 +44,7 @@ const TabButton: React.FC<TabButtonProps> = ({
           aria-selected={active}
         >
           {icon && <span>{icon}</span>}
-          <p className={`mr-3 font-semibold hover:text-black dark:hover:text-white ${buttonClasses}`}>{children}</p>
+          <p className={`mr-3 font-semibold hover:text-white dark:hover:text-black  ${buttonClasses}`}>{children}</p>
           <motion.div
             animate={active ? "active" : "default"}
             variants={variants}
