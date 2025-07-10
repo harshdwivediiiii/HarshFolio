@@ -98,7 +98,7 @@ const ProjectsSection = () => {
         My Projects
       </h2>
       {/* Tags */}
-      <div className={`flex flex-wrap justify-center items-center gap-2 py-6 ${currentTheme === "dark" ? "text-black" : "text-white" }`}>
+      <div className={`flex flex-wrap justify-center items-center gap-2 py-6 ${currentTheme === "dark" ? "text-white" : "text-black"}`}>
         <ProjectTag onClick={() => setTag("All")} name="All" isSelected={tag === "All"} />
         <ProjectTag onClick={() => setTag("Web")} name="Web" isSelected={tag === "Web"} />
         <ProjectTag onClick={() => setTag("Mobile")} name="Mobile" isSelected={tag === "Mobile"} />
