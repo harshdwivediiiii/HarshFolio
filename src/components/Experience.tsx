@@ -10,12 +10,9 @@ import {
 import { motion } from "framer-motion";
 import "react-vertical-timeline-component/style.min.css";
 import { experiences, ExperienceType } from "@/constants/Index";
-
-// ✅ Lucide Icons
 import { Briefcase, Building, ExternalLink, MapPin, Star } from "lucide-react";
 import Link from "next/link";
 
-// ✅ Typewriter effect (optional basic variant)
 const textVariants = {
   hidden: { opacity: 0, y: -20 },
   visible: (i: number) => ({
@@ -40,6 +37,75 @@ const Experience = () => {
 
   const headingText = "Experience";
 
+  const renderBadges = (badge: ExperienceType["badge"]) => {
+    if (Array.isArray(badge)) {
+      return badge.map((b, i) =>
+        b.link ? (
+          <Link
+            key={i}
+            href={b.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300 hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-lg"
+          >
+            <Star size={12} className="text-yellow-500" />
+            <Image
+              src={b.image}
+              alt={`Badge ${i}`}
+              width={200}
+              height={40}
+              className="transition-transform duration-300 hover:scale-105"
+            />
+          </Link>
+        ) : (
+          <div
+            key={i}
+            className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300"
+          >
+            <Star size={12} className="text-yellow-500" />
+            <Image
+              src={b.image}
+              alt={`Badge ${i}`}
+              width={200}
+              height={40}
+              className="transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        )
+      );
+    } else {
+      return badge?.image ? (
+        badge.link ? (
+          <Link
+            href={badge.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300 hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-lg"
+          >
+            <Star size={12} className="text-yellow-500" />
+            <Image
+              src={badge.image}
+              alt="Badge"
+              width={200}
+              height={40}
+              className="transition-transform duration-300 hover:scale-105"
+            />
+          </Link>
+        ) : (
+          <div className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300">
+            <Star size={12} className="text-yellow-500" />
+            <Image
+              src={badge.image}
+              alt="Badge"
+              width={200}
+              height={40}
+              className="transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        )
+      ) : null;
+    }
+  };
 
   return (
     <section className="py-10">
@@ -48,7 +114,7 @@ const Experience = () => {
         initial="hidden"
         animate="visible"
       >
-        <Briefcase  size={28} className="text-black dark:text-white" />
+        <Briefcase size={28} className="text-black dark:text-white" />
         {headingText.split("").map((char, i) => (
           <motion.span key={i} custom={i} variants={textVariants}>
             {char}
@@ -80,13 +146,15 @@ const Experience = () => {
                   alt={exp.company_name}
                   width={40}
                   height={40}
-                  className={`object-contain `}
+                  className="object-contain"
                 />
               </div>
             }
           >
             <div className="space-y-2">
-             <h3 className="text-xl font-semibold flex items-center gap-2"> <Building size={18} /> {exp.title}</h3>
+              <h3 className="text-xl font-semibold flex items-center gap-2">
+                <Building size={18} /> {exp.title}
+              </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                 {exp.link ? (
                   <a
@@ -107,24 +175,10 @@ const Experience = () => {
                   <MapPin size={14} /> {exp.location}
                 </p>
               )}
-              {exp.badge && (
-                 <Link 
-                 href={exp.badge.link}
-                 target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300 hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-lg"
-  >
-    <Star size={12} className="text-yellow-500 transition-transform duration-300 group-hover:rotate-12" />
-    <Image
-      src={exp.badge.image}
-      alt="Badge"
-      width={200}
-      height={40}
-      className="transition-transform duration-300 hover:scale-105"
-    />
-  </Link>
-)}
-  <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+
+              {exp.badge && <div className="flex flex-wrap gap-2">{renderBadges(exp.badge)}</div>}
+
+              <ul className="list-disc list-inside space-y-1 text-sm mt-2">
                 {exp.points.map((point, idx) => (
                   <li key={idx}>{point}</li>
                 ))}
