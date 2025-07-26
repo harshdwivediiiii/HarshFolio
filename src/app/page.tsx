@@ -4,6 +4,7 @@ import Experience from "@/components/Experience";
 import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import Slider from "@/components/Slider";
+import VolunteerPage from "@/components/volunteer";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <ProjectsSection />
       <Slider />
       <EmailSection />
+      <VolunteerPage />
       </div>
     
   );
