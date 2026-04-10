@@ -82,13 +82,14 @@ export default function Slider({ sliderImages = SliderImages }) {
                 damping: 20,
               }}
             >
-              <Image
-                src={src}
-                alt={`Journey image ${index + 1}`}
-                width={1920} // Ensure high resolution
-                height={1080} // Maintain aspect ratio
-                className="rounded-lg object-contain shadow-md w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]" // Use responsive heights
-              />
+             <Image
+  src={src}
+  alt={`Journey image ${index + 1}`}
+  width={1920}
+  height={1080}
+  unoptimized
+  className="rounded-lg object-contain shadow-md w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"
+/>
             </motion.div>
           ))}
         </div>

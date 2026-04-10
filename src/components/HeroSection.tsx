@@ -6,13 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaChevronDown, FaSun, FaMoon } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaChevronDown, } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
+
 
 const HeroSection: React.FC = () => {
-  const { theme, setTheme } = useTheme();
-  const textColor = theme === "light" ? "text-black" : "text-white";
 
   return (
     <>
@@ -24,15 +22,8 @@ const HeroSection: React.FC = () => {
         />
       </Head>
 
-      <section className="relative lg:py-20 flex flex-col-reverse sm:flex-row items-center justify-between px-4 sm:px-8">
+     <section className="relative lg:py-20 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-8">
         {/* Theme Toggle Button */}
-        <button
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          className="absolute top-5 right-5 text-2xl text-green-500"
-          aria-label="Toggle Theme"
-        >
-          {theme === "light" ? <FaMoon /> : <FaSun />}
-        </button>
 
         {/* Left - Text Section */}
         <motion.div
@@ -41,7 +32,7 @@ const HeroSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center sm:text-left"
         >
-          <h1 className={`mb-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold ${textColor}`}>
+          <h1 className="mb-4 text-4xl sm:text-6xl lg:text-7xl font-extrabold min-h-[120px] sm:min-h-[160px] lg:min-h-[200px]">
             <span className="text-green-500 dark:text-primary-400">Hello, I&apos;m</span>
             <br />
             <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
@@ -118,7 +109,7 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="relative"
+          className="relative self-start mt-8 sm:mt-0"
         >
           <div className="rounded bg-white dark:bg-[#000000] w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] flex items-center justify-center shadow-lg">
             <Image

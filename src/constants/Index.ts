@@ -104,5 +104,21 @@ export const SliderImages = [
   "/journey/6.png",
   "/journey/7.png",
   "/journey/8.png",
-  "/journey/9.png"
+  "/journey/9.png",
+  "/journey/10.png",
+  "/journey/11.png",
+  "/journey/12.png",
+  "/journey/6.png",
+  "/journey/7.png",
+  "/journey/8.png",
+  "/journey/9.png",
+  "/journey/10.png",
+  "/journey/11.png",
+  "/journey/12.png",
+  "/journey/13.png",
+  "/journey/14.png",
+  "/journey/15.png",
+  "/journey/16.png",
+  "/journey/17.png",
+  "/journey/18.png"
 ];
