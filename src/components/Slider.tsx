@@ -48,10 +48,10 @@ export default function Slider({ sliderImages = SliderImages }) {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent inline-block">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-violet-400 to-blue-500 bg-clip-text text-transparent inline-block">
           My Journey
         </h2>
-        <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+        <div className="w-24 h-1 bg-violet-500 mx-auto rounded-full"></div>
       </motion.div>
 
       {/* Embla carousel container */}
@@ -95,14 +95,14 @@ export default function Slider({ sliderImages = SliderImages }) {
         {/* Navigation Buttons */}
         <button
           onClick={scrollPrev}
-          className="absolute left-2 sm:-left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-gray-800 dark:text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-500 z-10 border border-gray-200 dark:border-gray-700"
+          className="absolute left-2 sm:-left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-gray-800 dark:text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-50 dark:hover:bg-gray-700 hover:text-violet-500 z-10 border border-gray-200 dark:border-gray-700"
           aria-label="Previous slide"
         >
           <FaChevronLeft className="text-xl" />
         </button>
         <button
           onClick={scrollNext}
-          className="absolute right-2 sm:-right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-gray-800 dark:text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-500 z-10 border border-gray-200 dark:border-gray-700"
+          className="absolute right-2 sm:-right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-gray-800 dark:text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-50 dark:hover:bg-gray-700 hover:text-violet-500 z-10 border border-gray-200 dark:border-gray-700"
           aria-label="Next slide"
         >
           <FaChevronRight className="text-xl" />
@@ -117,7 +117,7 @@ export default function Slider({ sliderImages = SliderImages }) {
             onClick={() => emblaApi?.scrollTo(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === selectedIndex
-                ? "bg-green-500 w-8"
+                ? "bg-violet-500 w-8"
                 : "bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600"
             }`}
             aria-label={`Go to slide ${index + 1}`}

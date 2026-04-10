@@ -37,7 +37,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ imgUrl, title, description, g
         </div>
       </div>
       <div className={`flex flex-col flex-grow ${theme === 'light' ? 'bg-white text-black' : 'bg-[#181818] text-white'} p-6 rounded-b-2xl`}>
-        <h5 className="text-xl font-bold mb-3 text-green-500 dark:text-green-400">{title}</h5>
+        <h5 className="text-xl font-bold mb-3 text-violet-500 dark:text-violet-400">{title}</h5>
         <div className="overflow-y-auto max-h-48 custom-scrollbar">
           <p className={`text-sm leading-relaxed ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
             {description}

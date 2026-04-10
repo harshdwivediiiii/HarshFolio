@@ -75,7 +75,7 @@ const EmailSection: React.FC = () => {
       <Card className="p-6 w-full max-w-lg bg-white dark:bg-[#181818] shadow-lg">
         <CardContent>
           {emailSubmitted ? (
-            <p className="text-green-500 text-sm text-center">✅ Email sent successfully!</p>
+            <p className="text-violet-500 text-sm text-center">✅ Email sent successfully!</p>
           ) : (
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <Input 

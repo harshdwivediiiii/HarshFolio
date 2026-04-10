@@ -30,10 +30,10 @@ const HeroSection: React.FC = () => {
           className="text-center lg:text-left flex-1"
         >
           <div className="mb-6 font-extrabold flex flex-col justify-center min-h-[140px] sm:min-h-[160px] lg:min-h-[220px]">
-            <span className="text-3xl sm:text-4xl text-green-500 dark:text-primary-400 mb-2 block">
+            <span className="text-3xl sm:text-4xl text-violet-500 dark:text-primary-400 mb-2 block">
               Hello, I&apos;m
             </span>
-            <span className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent break-words sm:whitespace-nowrap pb-2 leading-tight">
+            <span className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl bg-gradient-to-r from-violet-400 via-fuchsia-500 to-blue-500 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent break-words sm:whitespace-nowrap pb-2 leading-tight">
               Harshvardhan
             </span>
             <span className="text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-100 dark:to-gray-400 bg-clip-text text-transparent mt-2 block">
@@ -64,7 +64,7 @@ const HeroSection: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
-            <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full px-8 py-6 text-lg transition-all shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)]" asChild>
+            <Button className="bg-violet-600 hover:bg-violet-700 text-white rounded-full px-8 py-6 text-lg transition-all shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]" asChild>
               <Link href="#contact">Hire Me</Link>
             </Button>
             <Button variant="outline" className="rounded-full px-8 py-6 text-lg border-2 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-800 dark:text-gray-200" asChild>
@@ -76,7 +76,7 @@ const HeroSection: React.FC = () => {
             <Link
               href="https://github.com/harshdwivediiiii"
               target="_blank"
-              className="text-gray-600 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 transition-colors transform hover:scale-110 text-3xl"
+              className="text-gray-600 dark:text-gray-400 hover:text-violet-500 dark:hover:text-violet-400 transition-colors transform hover:scale-110 text-3xl"
             >
               <FaGithub />
             </Link>
@@ -106,7 +106,7 @@ const HeroSection: React.FC = () => {
         >
           <div className="relative group">
             {/* Background glowing blob */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-violet-400 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
 
             <div className="relative rounded-2xl bg-white dark:bg-[#111111] p-2 flex items-center justify-center shadow-xl">
               <div className="relative w-[280px] h-[350px] sm:w-[320px] sm:h-[400px] lg:w-[380px] lg:h-[480px] overflow-hidden rounded-xl">
@@ -121,7 +121,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-green-500 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
+            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-violet-500 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
           </div>
         </motion.div>

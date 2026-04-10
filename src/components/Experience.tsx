@@ -157,7 +157,7 @@ const Experience = () => {
             }
           >
             <div className="space-y-3">
-              <h3 className="text-2xl font-bold flex items-center gap-2 text-green-500 dark:text-green-400">
+              <h3 className="text-2xl font-bold flex items-center gap-2 text-violet-500 dark:text-violet-400">
                 <Building size={20} /> {exp.title}
               </h3>
               <p className="text-base text-gray-700 dark:text-gray-300 flex items-center gap-1 font-semibold">
@@ -194,7 +194,7 @@ const Experience = () => {
                   {exp.techStack.map((tech, i) => (
                      <span
                       key={i}
-                      className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 text-xs font-medium px-2.5 py-1 rounded-full"
+                      className="bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-200 text-xs font-medium px-2.5 py-1 rounded-full"
                     >
                       {tech}
                     </span>
