@@ -49,13 +49,14 @@ const Experience = () => {
             className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300 hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-lg"
           >
             <Star size={12} className="text-yellow-500" />
-            <Image
-              src={b.image}
-              alt={`Badge ${i}`}
-              width={200}
-              height={40}
-              className="transition-transform duration-300 hover:scale-105"
-            />
+            <div className="relative w-32 h-8">
+              <Image
+                src={b.image}
+                alt={`Badge ${i}`}
+                fill
+                className="object-contain transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </Link>
         ) : (
           <div
@@ -63,13 +64,14 @@ const Experience = () => {
             className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300"
           >
             <Star size={12} className="text-yellow-500" />
-            <Image
-              src={b.image}
-              alt={`Badge ${i}`}
-              width={200}
-              height={40}
-              className="transition-transform duration-300 hover:scale-105"
-            />
+            <div className="relative w-32 h-8">
+              <Image
+                src={b.image}
+                alt={`Badge ${i}`}
+                fill
+                className="object-contain transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </div>
         )
       );
@@ -83,24 +85,26 @@ const Experience = () => {
             className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300 hover:scale-105 hover:bg-gray-300 dark:hover:bg-gray-700 hover:shadow-lg"
           >
             <Star size={12} className="text-yellow-500" />
-            <Image
-              src={badge.image}
-              alt="Badge"
-              width={200}
-              height={40}
-              className="transition-transform duration-300 hover:scale-105"
-            />
+            <div className="relative w-32 h-8">
+              <Image
+                src={badge.image}
+                alt="Badge"
+                fill
+                className="object-contain transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </Link>
         ) : (
           <div className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-xs font-semibold px-2 py-1 rounded-md transition-all duration-300">
             <Star size={12} className="text-yellow-500" />
-            <Image
-              src={badge.image}
-              alt="Badge"
-              width={200}
-              height={40}
-              className="transition-transform duration-300 hover:scale-105"
-            />
+            <div className="relative w-32 h-8">
+              <Image
+                src={badge.image}
+                alt="Badge"
+                fill
+                className="object-contain transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </div>
         )
       ) : null;
@@ -127,20 +131,21 @@ const Experience = () => {
           <VerticalTimelineElement
             key={index}
             contentStyle={{
-              background: theme === "dark" ? "#000000" : "#ffffff",
+              background: theme === "dark" ? "#111111" : "#ffffff",
               color: theme === "dark" ? "#ffffff" : "#000000",
-              boxShadow: "0 3px 15px rgba(0,0,0,0.2)",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+              borderRadius: "16px",
             }}
             contentArrowStyle={{
               borderRight:
                 theme === "dark"
-                  ? "7px solid #000000"
+                  ? "7px solid #111111"
                   : "7px solid #ffffff",
             }}
             date={exp.date}
             iconStyle={{ background: exp.iconBg || "#E6DEDD" }}
             icon={
-              <div className="flex justify-center items-center w-full h-full">
+              <div className="flex justify-center items-center w-full h-full p-2">
                 <Image
                   src={exp.icon}
                   alt={exp.company_name}
@@ -151,17 +156,17 @@ const Experience = () => {
               </div>
             }
           >
-            <div className="space-y-2">
-              <h3 className="text-xl font-semibold flex items-center gap-2">
-                <Building size={18} /> {exp.title}
+            <div className="space-y-3">
+              <h3 className="text-2xl font-bold flex items-center gap-2 text-green-500 dark:text-green-400">
+                <Building size={20} /> {exp.title}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+              <p className="text-base text-gray-700 dark:text-gray-300 flex items-center gap-1 font-semibold">
                 {exp.link ? (
                   <a
                     href={exp.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-blue-500 flex items-center gap-1"
+                    className="hover:underline hover:text-blue-500 flex items-center gap-1"
                   >
                     {exp.company_name} <ExternalLink size={14} />
                   </a>
@@ -171,25 +176,25 @@ const Experience = () => {
               </p>
 
               {exp.location && (
-                <p className="text-sm text-gray-400 flex items-center gap-1">
+                <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                   <MapPin size={14} /> {exp.location}
                 </p>
               )}
 
-              {exp.badge && <div className="flex flex-wrap gap-2">{renderBadges(exp.badge)}</div>}
+              {exp.badge && <div className="flex flex-wrap gap-2 mt-2">{renderBadges(exp.badge)}</div>}
 
-              <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+              <ul className="list-disc list-inside space-y-1 text-sm mt-3 text-gray-600 dark:text-gray-300 leading-relaxed">
                 {exp.points.map((point, idx) => (
-                  <li key={idx}>{point}</li>
+                  <li key={idx} className="mb-1">{point}</li>
                 ))}
               </ul>
 
               {exp.techStack && (
-                <div className="flex flex-wrap mt-3 gap-2">
+                <div className="flex flex-wrap mt-4 gap-2">
                   {exp.techStack.map((tech, i) => (
-                    <span
+                     <span
                       key={i}
-                      className="bg-gray-200 dark:bg-gray-700 text-xs px-2 py-1 rounded-md"
+                      className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 text-xs font-medium px-2.5 py-1 rounded-full"
                     >
                       {tech}
                     </span>

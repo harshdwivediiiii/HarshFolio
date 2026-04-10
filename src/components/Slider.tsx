@@ -1,23 +1,31 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import Autoplay from "embla-carousel-autoplay";
 import { SliderImages } from "@/constants/Index";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function Slider({ sliderImages = SliderImages }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
 
   // Autoplay plugin setup
-  const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
+  const autoplay = Autoplay({ delay: 3500, stopOnInteraction: true });
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true },
-    autoplayEnabled ? [autoplay] : [] // Disable autoplay plugin if not enabled
+    { loop: true, align: "center" },
+    [autoplay]
   );
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -30,88 +38,90 @@ export default function Slider({ sliderImages = SliderImages }) {
     emblaApi.on("select", onSelect);
   }, [emblaApi, onSelect]);
 
-  // Disable autoplay on desktop
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleResize = () => {
-        setAutoplayEnabled(window.innerWidth < 1024); // Disable autoplay for desktop (lg breakpoint)
-      };
-
-      handleResize(); // Check on initial render
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
-
   return (
-    <div className="my-12 px-4">
-      {/* Add animation to the title */}
-      <motion.h2
-        className="text-3xl font-bold text-center mb-6"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        My Journey
-      </motion.h2>
-
-      {/* Embla carousel container */}
+    <div className="my-20 px-4 max-w-6xl mx-auto">
+      {/* Title */}
       <motion.div
-        className="overflow-hidden rounded-xl"
-        ref={emblaRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12"
       >
-        <div className="flex">
-          {sliderImages.map((src, index) => (
-            <motion.div
-              key={index}
-              className="flex-[0_0_100%] px-4"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{
-                scale: index === selectedIndex ? 1 : 0.9,
-                opacity: index === selectedIndex ? 1 : 0.5,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-              }}
-            >
-             <Image
-  src={src}
-  alt={`Journey image ${index + 1}`}
-  width={1920}
-  height={1080}
-  unoptimized
-  className="rounded-lg object-contain shadow-md w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"
-/>
-            </motion.div>
-          ))}
-        </div>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent inline-block">
+          My Journey
+        </h2>
+        <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
       </motion.div>
 
-      {/* Pagination dots with animation */}
-      <div className="flex justify-center gap-2 mt-4">
+      {/* Embla carousel container */}
+      <div className="relative group">
+        <motion.div
+          className="overflow-hidden rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800"
+          ref={emblaRef}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex touch-pan-y">
+            {sliderImages.map((src, index) => (
+              <div
+                key={index}
+                className="flex-[0_0_100%] min-w-0 relative px-2 sm:px-6 py-6 sm:py-8 flex items-center justify-center"
+              >
+                <motion.div
+                  animate={{
+                    scale: index === selectedIndex ? 1 : 0.9,
+                    opacity: index === selectedIndex ? 1 : 0.4,
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className="relative w-full max-w-4xl h-[300px] sm:h-[400px] md:h-[500px]"
+                >
+                  <Image
+                    src={src}
+                    alt={`Journey snapshot ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
+                    className="rounded-xl object-contain drop-shadow-lg"
+                    priority={index === 0}
+                  />
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={scrollPrev}
+          className="absolute left-2 sm:-left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-gray-800 dark:text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-500 z-10 border border-gray-200 dark:border-gray-700"
+          aria-label="Previous slide"
+        >
+          <FaChevronLeft className="text-xl" />
+        </button>
+        <button
+          onClick={scrollNext}
+          className="absolute right-2 sm:-right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-gray-800 dark:text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-500 z-10 border border-gray-200 dark:border-gray-700"
+          aria-label="Next slide"
+        >
+          <FaChevronRight className="text-xl" />
+        </button>
+      </div>
+
+      {/* Pagination dots */}
+      <div className="flex justify-center gap-3 mt-8 flex-wrap max-w-lg mx-auto">
         {sliderImages.map((_, index) => (
-          <motion.div
+          <button
             key={index}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Button
-              className={`w-3 h-3 rounded-full ${
-                index === selectedIndex
-                  ? "bg-gray-800"
-                  : "bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500 hover:bg-gray-300"
-              }`}
-              onClick={() => emblaApi?.scrollTo(index)}
-            />
-          </motion.div>
+            onClick={() => emblaApi?.scrollTo(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === selectedIndex
+                ? "bg-green-500 w-8"
+                : "bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
         ))}
       </div>
     </div>
