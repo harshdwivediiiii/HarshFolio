@@ -1,9 +1,9 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
-import TabButton from "./TabButton";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import TabButton from "./TabButton";
 
 interface Tab {
   title: string;
@@ -16,14 +16,42 @@ const TAB_DATA: Tab[] = [
     title: "Skills",
     id: "skills",
     content: (
-      <ul className="grid grid-cols-2 gap-2 list-disc pl-4 text-violet-600 dark:text-violet-400 font-medium">
-        <li><span className="text-gray-700 dark:text-gray-300">Artificial Intelligence</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">Machine Learning</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">Computer Vision (OpenCV, YOLO)</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">Python & C++</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">TensorFlow & PyTorch</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">MERN Stack (Web Dev)</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">LLMs, RAG, CNNs & RNNs</span></li>
+      <ul className="grid list-disc grid-cols-2 gap-2 pl-4 font-medium text-violet-600 dark:text-violet-400">
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Artificial Intelligence
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Machine Learning
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Computer Vision (OpenCV, YOLO)
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Python & C++
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            TensorFlow & PyTorch
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            MERN Stack (Web Dev)
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            LLMs, RAG, CNNs & RNNs
+          </span>
+        </li>
       </ul>
     ),
   },
@@ -31,8 +59,12 @@ const TAB_DATA: Tab[] = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-4 text-violet-600 dark:text-violet-400 font-medium">
-        <li><span className="text-gray-700 dark:text-gray-300">Sophomore, CSE AI/ML Engineering</span></li>
+      <ul className="list-disc pl-4 font-medium text-violet-600 dark:text-violet-400">
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Sophomore, CSE AI/ML Engineering
+          </span>
+        </li>
       </ul>
     ),
   },
@@ -40,11 +72,27 @@ const TAB_DATA: Tab[] = [
     title: "Goals",
     id: "goals",
     content: (
-      <ul className="list-disc pl-4 text-violet-600 dark:text-violet-400 font-medium space-y-1">
-        <li><span className="text-gray-700 dark:text-gray-300">Preparing for Google Summer of Code (GSoC)</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">Actively participating in hackathons</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">Building advanced AI-driven applications</span></li>
-        <li><span className="text-gray-700 dark:text-gray-300">Contributing to the open-source community</span></li>
+      <ul className="list-disc space-y-1 pl-4 font-medium text-violet-600 dark:text-violet-400">
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Preparing for Google Summer of Code (GSoC)
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Actively participating in hackathons
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Building advanced AI-driven applications
+          </span>
+        </li>
+        <li>
+          <span className="text-gray-700 dark:text-gray-300">
+            Contributing to the open-source community
+          </span>
+        </li>
       </ul>
     ),
   },
@@ -53,13 +101,31 @@ const TAB_DATA: Tab[] = [
     id: "languages-and-tools",
     content: (
       <div>
-        <h2 className="text-lg font-semibold mb-3">💻 Tech Stack:</h2>
+        <h2 className="mb-3 text-lg font-semibold">Tech Stack:</h2>
         <div className="flex flex-wrap gap-2">
-          {/* Note: I intentionally removed the badges here since we have a dedicated TechMarquee section now, but we can list top ones or keep them. Let's keep a curated list of interactive elements. */}
-          {["Python", "C++", "TypeScript", "JavaScript", "React", "Node.js", "Express", "MongoDB", "TensorFlow", "PyTorch", "OpenCV", "Flask", "YOLOv8", "RNN/CNN", "RAG"].map((lang) => (
-             <span key={lang} className="px-3 py-1 bg-violet-100 dark:bg-violet-900/40 text-violet-800 dark:text-violet-200 rounded-full text-sm font-semibold border border-violet-200 dark:border-violet-800 hover:scale-105 transition-transform cursor-default">
-               {lang}
-             </span>
+          {[
+            "Python",
+            "C++",
+            "TypeScript",
+            "JavaScript",
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB",
+            "TensorFlow",
+            "PyTorch",
+            "OpenCV",
+            "Flask",
+            "YOLOv8",
+            "RNN/CNN",
+            "RAG",
+          ].map((lang) => (
+            <span
+              key={lang}
+              className="cursor-default rounded-full border border-violet-200 bg-violet-100 px-3 py-1 text-sm font-semibold text-violet-800 transition-transform hover:scale-105 dark:border-violet-800 dark:bg-violet-900/40 dark:text-violet-200"
+            >
+              {lang}
+            </span>
           ))}
         </div>
       </div>
@@ -76,44 +142,53 @@ const AboutSection: React.FC = () => {
 
   return (
     <section
-      className="text-gray-700 dark:text-white bg-white dark:bg-transparent py-8 sm:py-16 scroll-mt-20"
+      className="scroll-mt-20 bg-white py-8 text-gray-700 dark:bg-transparent dark:text-white sm:py-16"
       id="about"
     >
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <motion.div 
-          className="flex justify-center items-center w-full mb-8 md:mb-0 relative group"
+      <div className="flex flex-col items-center gap-8 px-4 py-8 md:grid md:grid-cols-2 xl:gap-16 xl:px-16 sm:py-16">
+        <motion.div
+          className="relative mb-8 flex w-full items-center justify-center group md:mb-0"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="absolute -inset-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full blur opacity-30 group-hover:opacity-70 transition duration-1000"></div>
+          <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 opacity-30 blur transition duration-1000 group-hover:opacity-70" />
           <Image
             src="/images/about-image.png"
             width={400}
             height={400}
             alt="About Me"
-            className="rounded-2xl shadow-2xl w-[250px] h-[250px] object-cover sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] border-4 border-white dark:border-[#111] relative z-10 transition-transform duration-500 group-hover:scale-105"
+            className="relative z-10 h-[250px] w-[250px] rounded-2xl border-4 border-white object-cover shadow-2xl transition-transform duration-500 group-hover:scale-105 dark:border-[#111] sm:h-[300px] sm:w-[300px] md:h-[350px] md:w-[350px] xl:h-[400px] xl:w-[400px]"
             priority
           />
         </motion.div>
-        
-        <motion.div 
-          className="mt-0 text-left flex flex-col h-full w-full"
+
+        <motion.div
+          className="mt-0 flex h-full w-full flex-col text-left"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 relative inline-block w-fit">
+          <h2 className="relative mb-6 inline-block w-fit text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
             About Me
-            <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-violet-500 rounded-full"></span>
+            <span className="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-violet-500" />
           </h2>
-          <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6 font-medium">
-            I am an <span className="text-violet-600 dark:text-violet-400 font-bold">AI/ML Engineer</span> with a strong interest in building intelligent solutions. Currently, I specialize in computer vision, deep learning, and robust web applications using the MERN stack. I'm preparing for GSoC and actively participating in hackathons to sharpen my problem-solving abilities. My ultimate goal is to integrate cutting-edge AI architectures into scalable, real-world platforms.
+          <p className="mb-6 text-base font-medium leading-relaxed text-gray-700 dark:text-gray-300 sm:text-lg">
+            I am an{" "}
+            <span className="font-bold text-violet-600 dark:text-violet-400">
+              AI/ML Engineer
+            </span>{" "}
+            with a strong interest in building intelligent solutions.
+            Currently, I specialize in computer vision, deep learning, and
+            robust web applications using the MERN stack. I&apos;m preparing
+            for GSoC and actively participating in hackathons to sharpen my
+            problem-solving abilities. My ultimate goal is to integrate
+            cutting-edge AI architectures into scalable, real-world platforms.
           </p>
-          
-          <div className="flex flex-wrap sm:flex-row justify-start mt-4 gap-2 border-b border-gray-200 dark:border-gray-800 pb-2">
+
+          <div className="mt-4 flex flex-wrap justify-start gap-2 border-b border-gray-200 pb-2 dark:border-gray-800 sm:flex-row">
             {TAB_DATA.map(({ id, title }) => (
               <TabButton
                 key={id}
@@ -124,15 +199,15 @@ const AboutSection: React.FC = () => {
               </TabButton>
             ))}
           </div>
-          
-          <motion.div 
-            className="mt-6 sm:mt-8 min-h-[150px]"
+
+          <motion.div
+            className="mt-6 min-h-[150px] sm:mt-8"
             key={tab}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {TAB_DATA.find((t) => t.id === tab)?.content}
+            {TAB_DATA.find((item) => item.id === tab)?.content}
           </motion.div>
         </motion.div>
       </div>
