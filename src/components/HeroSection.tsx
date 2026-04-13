@@ -88,7 +88,7 @@ const HeroSection: React.FC = () => {
               <FaGithub />
             </Link>
             <Link
-              href="https://www.linkedin.com/in/harshvardhan-dwivedi-86b375290"
+              href="https://www.linkedin.com/in/harshvardhan-d-86b375290"
               target="_blank"
               className="transform text-3xl text-gray-600 transition-colors hover:scale-110 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400"
             >
