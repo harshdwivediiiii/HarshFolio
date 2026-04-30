@@ -1,140 +1,129 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
-import NavLink from "./NavLink";
-import { Menu, Info, Folder, Mail,Search, HomeIcon, Briefcase, PictureInPicture2} from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Menu, Info, Folder, Mail, HomeIcon, Briefcase, Activity, Heart, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { useTheme } from "next-themes"; // Import useTheme
-import ModeToggle from "./mode-toggle";
+import { useAppStore } from "@/store/useAppStore";
 
 type NavLinkItem = {
   title: string;
-  path: string;
+  path?: string;
   icon: React.ReactNode;
+  action?: () => void;
 };
 
-const navLinks: NavLinkItem[] = [
-  {
-    title: "Home",
-    path: "/",
-    icon: <HomeIcon className="w-5 h-5" />,
-  },
-  {
-    title: "About",
-    path: "/about",
-    icon: <Info className="w-5 h-5" />,
-  },
-  {
-    title: "Projects",
-    path: "/projects",
-    icon: <Folder className="w-5 h-5" />,
-  },
-  {
-    title: "Contact",
-    path: "/contact",
-    icon: <Mail className="w-5 h-5" />,
-  },
-  {
-    title: "Experience",
-    path: "/experience",
-    icon: <Briefcase className="w-5 h-5" />,
-  },
-  {
-    title: "Gallery",
-    path: "/gallery",
-    icon: <PictureInPicture2 className="w-5 h-5" />,
-  }
-];
-
-
 const Navbar: React.FC = () => {
-  const { theme } = useTheme(); // Get the current theme
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredLinks, setFilteredLinks] = useState<NavLinkItem[]>([]);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { setAboutOpen } = useAppStore();
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
-    if (query) {
-      setFilteredLinks(navLinks.filter(link => link.title.toLowerCase().includes(query)));
-    } else {
-      setFilteredLinks([]);
-    }
-  };
+  const navLinks: NavLinkItem[] = [
+    { title: "Home", path: "#home", icon: <HomeIcon className="w-4 h-4" /> },
+    { title: "About", action: () => setAboutOpen(true), icon: <Info className="w-4 h-4" /> },
+    { title: "Skills", path: "#skills", icon: <Activity className="w-4 h-4" /> },
+    { title: "Projects", path: "#projects", icon: <Folder className="w-4 h-4" /> },
+    { title: "Journey", path: "#journey", icon: <Briefcase className="w-4 h-4" /> },
+    { title: "Stats", path: "#stats", icon: <Activity className="w-4 h-4" /> },
+    { title: "Volunteer", path: "#volunteer", icon: <Heart className="w-4 h-4" /> },
+    { title: "Contact", path: "#contact", icon: <Mail className="w-4 h-4" /> },
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className={`fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
-      <div className={`flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-neon py-3' : 'bg-transparent py-5'}`}>
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        
+        {/* Logo */}
         <Link
           href={"/"}
-          className={`text-2xl md:text-5xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}
+          className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] transition-all duration-300 tracking-wider font-mono"
         >
-          Harshfolio
+          SYS.HWD
         </Link>
         
-        <div className="relative w-64">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-          <input
-            type="text"
-            placeholder="    Search..."
-            value={searchQuery}
-            onChange={handleSearch}
-            className="w-full px-4 py-2 rounded-md bg-gray-200 dark:bg-black text-black dark:text-white"
-          />
-          {searchQuery && (
-            <ul className="absolute left-0 w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md mt-1 shadow-md">
-              {filteredLinks.length > 0 ? (
-                filteredLinks.map((link, index) => (
-                  <li key={index} className="flex items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
-                    {link.icon}
-                    <Link href={link.path} className="ml-2">{link.title}</Link>
-                  </li>
-                ))
-              ) : (
-                <li className="p-2 text-gray-500 dark:text-gray-400">No results found</li>
-              )}
-            </ul>
-          )}
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
+          {navLinks.map((link, index) => {
+            if (link.action) {
+              return (
+                <button 
+                  key={index} 
+                  onClick={link.action}
+                  className="group relative flex items-center space-x-2 px-3 py-2 text-sm font-mono text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                >
+                  <span className="text-purple-500 group-hover:text-cyan-400 transition-colors duration-300">{link.icon}</span>
+                  <span>{link.title}</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_8px_rgba(0,255,255,0.8)]" />
+                </button>
+              )
+            }
+            return (
+              <Link 
+                key={index} 
+                href={link.path || "#"}
+                className="group relative flex items-center space-x-2 px-3 py-2 text-sm font-mono text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+              >
+                <span className="text-purple-500 group-hover:text-cyan-400 transition-colors duration-300">{link.icon}</span>
+                <span>{link.title}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_8px_rgba(0,255,255,0.8)]" />
+              </Link>
+            )
+          })}
         </div>
 
-        <ModeToggle />
-
-        <div className="mobile-menu block md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className={`bg-[#121212] ${theme === 'light' ? 'bg-white' : 'bg-[#121212]'} text-${theme === 'light' ? 'black' : 'white'}`}>              
-              <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
-              </SheetHeader>
-              <ModeToggle/>
-              <ul className="flex flex-col space-y-4 mt-4">
-                {navLinks.map((link, index) => (
-                  <li key={index} className={`flex items-center space-x-2 transition duration-300 transform hover:scale-105 ${theme === 'light' ? 'hover:text-yellow-600' : 'hover:text-yellow-100'}`}>                    
-                    {link.icon}
-                    <NavLink href={link.path} title={link.title} />
-                  </li>
-                ))}
-              </ul>
-            </SheetContent>
-          </Sheet>
-        </div>
-
-        <div className="menu hidden md:flex md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-            {navLinks.map((link, index) => (
-              <li key={index} className={`flex items-center space-x-2 transition duration-300 transform ${theme === 'light' ? 'text-black hover:text-yellow-600' : 'text-white hover:text-yellow-100'}`}>                
-                {link.icon}
-                <NavLink href={link.path} title={link.title} />
-              </li>
-            ))}
-          </ul>
+        {/* Mobile Toggle */}
+        <div className="md:hidden">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="text-cyan-400 hover:bg-cyan-900/30 hover:text-cyan-300"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="absolute top-full left-0 w-full glass-neon border-t border-cyan-500/20 py-4 flex flex-col px-4 space-y-4 md:hidden">
+          {navLinks.map((link, index) => {
+            if (link.action) {
+              return (
+                <button 
+                  key={index} 
+                  onClick={() => {
+                    link.action!();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:text-cyan-400 hover:bg-cyan-900/20 border border-transparent hover:border-cyan-500/30 transition-all duration-300 font-mono w-full text-left"
+                >
+                  <span className="text-purple-400">{link.icon}</span>
+                  <span>{link.title}</span>
+                </button>
+              )
+            }
+            return (
+              <Link 
+                key={index} 
+                href={link.path || "#"}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:text-cyan-400 hover:bg-cyan-900/20 border border-transparent hover:border-cyan-500/30 transition-all duration-300 font-mono"
+              >
+                <span className="text-purple-400">{link.icon}</span>
+                <span>{link.title}</span>
+              </Link>
+            )
+          })}
+        </div>
+      )}
     </nav>
   );
 };

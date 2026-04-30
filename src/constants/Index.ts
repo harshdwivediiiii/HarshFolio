@@ -26,36 +26,57 @@ export const skillGroups = [
   { title: "Backend & Cloud", items: ["Node.js", "FastAPI", "PostgreSQL", "Docker", "AWS", "Supabase"] },
 ];
 
+
 export const projects = [
   {
+    id: 1,
     title: "DevCity AI",
-    blurb: "Smart city AI platform using YOLOv8 and OpenCV for real-time traffic analysis and urban monitoring.",
+    description:
+      "Smart city AI platform using YOLOv8 and OpenCV for real-time traffic analysis and urban monitoring.",
+    image: "/images/projects/1.png",
     tags: ["Python", "YOLOv8", "OpenCV", "Flask", "MongoDB"],
-    link: "#",
+    gitUrl: "#",
+    previewUrl: "#",
   },
   {
+    id: 2,
     title: "NeuroFunds AI",
-    blurb: "AI-powered finance platform using Gemini AI for budgeting and personalized financial insights.",
+    description:
+      "NeuroFunds AI is an all-in-one, AI-powered personal-finance toolkit. Built with Next.js, Tailwind, Prisma, Supabase, and Google Gemini, it delivers secure banking-grade infrastructure, real-time background jobs, and ML-driven spending insights.",
+    image: "/images/projects/7.png",
     tags: ["Next.js", "Prisma", "Supabase", "Clerk", "Gemini AI"],
-    link: "#",
+    gitUrl: "https://github.com/harshdwivediiiii/neurofunds-ai",
+    previewUrl: "https://neurofunds-ai-g7n7.vercel.app/",
   },
   {
+    id: 3,
     title: "Pathfinder AI",
-    blurb: "AI-driven career roadmap platform providing personalized learning paths and skill recommendations.",
+    description:
+      "AI-driven career roadmap platform providing personalized learning paths and skill recommendations.",
+    image: "/images/projects/3.png",
     tags: ["AI", "LLMs", "Next.js"],
-    link: "#",
+    gitUrl: "#",
+    previewUrl: "#",
   },
   {
+    id: 4,
     title: "Neural Vision Studio",
-    blurb: "Real-time computer vision playground with on-device transformer inference.",
+    description:
+      "Real-time computer vision playground with on-device transformer inference.",
+    image: "/images/projects/4.png",
     tags: ["PyTorch", "WebGL", "ONNX"],
-    link: "#",
+    gitUrl: "#",
+    previewUrl: "#",
   },
   {
+    id: 5,
     title: "LLM Knowledge Mesh",
-    blurb: "Retrieval-augmented chat over private docs with hybrid vector + graph search.",
+    description:
+      "Retrieval-augmented chat over private docs with hybrid vector + graph search.",
+    image: "/images/projects/5.png",
     tags: ["LangChain", "pgvector", "FastAPI"],
-    link: "#",
+    gitUrl: "#",
+    previewUrl: "#",
   },
 ];
 

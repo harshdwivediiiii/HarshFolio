@@ -45,75 +45,41 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+:root, .dark {
+  /* Cyberpunk Dark Theme */
+  --background: #050507;
+  --foreground: #ffffff;
+  --card: rgba(10, 10, 12, 0.6);
+  --card-foreground: #ffffff;
+  --popover: #0A0A0C;
+  --popover-foreground: #ffffff;
+  --primary: #00FFFF; /* Cyan */
+  --primary-foreground: #050507;
+  --secondary: #8A2BE2; /* Purple */
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.1);
+  --muted-foreground: rgba(255, 255, 255, 0.6);
+  --accent: #FF00FF; /* Pink */
+  --accent-foreground: #ffffff;
+  --destructive: #ff003c; /* Cyberpunk Red */
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 255, 255, 0.2);
+  --input: rgba(0, 255, 255, 0.1);
+  --ring: #00FFFF;
+  --chart-1: #00FFFF;
+  --chart-2: #8A2BE2;
+  --chart-3: #FF00FF;
+  --chart-4: #00e6e6;
+  --chart-5: #6a0dad;
+  --radius: 0.5rem;
+  --sidebar: #050507;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00FFFF;
+  --sidebar-primary-foreground: #050507;
+  --sidebar-accent: #8A2BE2;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(0, 255, 255, 0.2);
+  --sidebar-ring: #00FFFF;
 }
 
 @layer base {
@@ -122,14 +88,90 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: #050507;
+    background-image: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
   }
 }
-/* globals.css or another global stylesheet */
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(10, 10, 12, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.glass-neon {
+  background: rgba(10, 10, 12, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1), inset 0 0 10px rgba(0, 255, 255, 0.05);
+}
+
+.neon-text {
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), inset 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.neon-border-pink {
+  border-color: rgba(255, 0, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), inset 0 0 5px rgba(255, 0, 255, 0.3);
+}
+
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -1px 0 blue;
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(20px, 9999px, 85px, 0); }
+  20% { clip: rect(92px, 9999px, 6px, 0); }
+  40% { clip: rect(43px, 9999px, 85px, 0); }
+  60% { clip: rect(74px, 9999px, 14px, 0); }
+  80% { clip: rect(12px, 9999px, 59px, 0); }
+  100% { clip: rect(65px, 9999px, 73px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  20% { clip: rect(10px, 9999px, 45px, 0); }
+  40% { clip: rect(89px, 9999px, 12px, 0); }
+  60% { clip: rect(31px, 9999px, 88px, 0); }
+  80% { clip: rect(56px, 9999px, 34px, 0); }
+  100% { clip: rect(23px, 9999px, 76px, 0); }
+}
+
+/* Timeline */
 .vertical-timeline::before {
-  background: #000000 !important; /* Black line */
+  background: var(--primary) !important; 
+  box-shadow: 0 0 10px var(--primary);
 }
-
-.dark .vertical-timeline::before {
-  background: #fff !important; /* White line for dark mode */
-}
-

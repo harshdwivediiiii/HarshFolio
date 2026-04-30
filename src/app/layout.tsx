@@ -23,22 +23,25 @@ export const metadata: Metadata = {
   description: "Next.js portfolio website",
 };
 
+import LoadingScreen from "@/components/LoadingScreen";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <ThemeProvider 
          attribute="class"
-         defaultTheme="system"
-         enableSystem
+         defaultTheme="dark"
+         forcedTheme="dark"
          disableTransitionOnChange
        >
+        <LoadingScreen />
         <SceneWrapper />
         <div className="relative z-10 w-full min-h-screen">
           {children}

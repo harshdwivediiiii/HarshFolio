@@ -1,11 +1,11 @@
-import Slider from '@/components/Slider'
+import Slider from '@/components/gallery'
 import React from 'react'
 
 const gallerypage = () => {
   return (
     <div className="container mt-24 mx-auto px-12 py-4 dark:bg-black bg-white dark:text-white text-black">
-      <Slider />  
-      
+      <Slider />
+
     </div>
   )
 }

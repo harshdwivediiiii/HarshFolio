@@ -3,6 +3,7 @@
 import React, { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useAppStore } from "@/store/useAppStore";
 
 export default function BrainModel() {
   const meshRef = useRef<THREE.Mesh>(null!);
@@ -78,7 +79,7 @@ export default function BrainModel() {
         onPointerOver={() => setHover(true)}
         onPointerOut={() => setHover(false)}
         onClick={() => {
-          window.dispatchEvent(new CustomEvent("open-about"));
+          useAppStore.getState().setAboutOpen(true);
         }}
       >
         <icosahedronGeometry args={[1.5, 3]} />
