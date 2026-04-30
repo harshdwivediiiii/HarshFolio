@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
           <Link href="https://github.com/harshdwivediiiii" target="_blank">
             <Github className="w-6 h-6 hover:text-primary-500 dark:hover:text-primary-400 transition-colors hover:scale-110" />
           </Link>
-          <Link href="https://www.linkedin.com/in/harshvardhan-dwivedi-86b375290" target="_blank">
+          <Link href="https://www.linkedin.com/in/harshvardhan-d-86b375290" target="_blank">
             <Linkedin className="w-6 h-6 hover:text-primary-500 dark:hover:text-primary-400 transition-colors hover:scale-110" />
           </Link>
           <Link href="mailto:harshvardhandwivedi18@gmail.com">

@@ -77,21 +77,36 @@ const HeroSection: React.FC = () => {
           Building intelligent systems and immersive interfaces at the intersection of machine learning and modern web. Transforming ideas into scalable solutions.
         </motion.p>
 
-        <motion.div variants={itemVariants} className="flex flex-col justify-center gap-6 sm:flex-row lg:justify-start">
-          <Link href="#projects">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 255, 255, 0.7)", y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-full border border-cyan-400 bg-cyan-400/10 px-8 py-4 text-lg font-mono text-cyan-400 transition-all backdrop-blur-md w-full sm:w-auto"
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+            <Button
+              className="rounded-full bg-violet-600 px-8 py-6 text-lg text-white shadow-[0_0_15px_rgba(139,92,246,0.4)] transition-all hover:bg-violet-700 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]"
+              asChild
             >
-              View Projects
-            </motion.button>
-          </Link>
-          <Link href="#contact">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(138, 43, 226, 0.7)", y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-full border border-purple-500 bg-purple-500/10 px-8 py-4 text-lg font-mono text-purple-400 transition-all backdrop-blur-md w-full sm:w-auto"
+              <Link href="#contact">Hire Me</Link>
+            </Button>
+            <Button
+              variant="outline"
+              className="rounded-full border-2 px-8 py-6 text-lg text-gray-800 transition-all hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800"
+              asChild
+            >
+              <Link href="/resume.pdf" target="_blank">
+                Download CV
+              </Link>
+            </Button>
+          </div>
+
+          <div className="mt-8 flex justify-center space-x-6 lg:justify-start">
+            <Link
+              href="https://github.com/harshdwivediiiii"
+              target="_blank"
+              className="transform text-3xl text-gray-600 transition-colors hover:scale-110 hover:text-violet-500 dark:text-gray-400 dark:hover:text-violet-400"
+            >
+              <FaGithub />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/harshvardhan-dwivedi-86b375290"
+              target="_blank"
+              className="transform text-3xl text-gray-600 transition-colors hover:scale-110 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400"
             >
               Contact Me
             </motion.button>
