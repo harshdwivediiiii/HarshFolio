@@ -1,3 +1,64 @@
+export const profile = {
+  name: "Harshvardhan Dwivedi",
+  shortName: "H. Dwivedi",
+  role: "AI/ML Engineer & Full-Stack Developer",
+  tagline: "Building intelligent systems and immersive interfaces at the intersection of machine learning and modern web.",
+  location: "India",
+  email: "harshvardhandwivedi18@gmail.com",
+  social: {
+    github: "https://github.com/harshdwivediiiii",
+    linkedin: "https://linkedin.com/in/harshvardhan-d-86b375290",
+    twitter: "https://x.com/Harshvdwivediii",
+  },
+};
+
+export const stats = [
+  { label: "Projects", value: 10, suffix: "+" },
+  { label: "ML Models", value: 15, suffix: "+" },
+  { label: "Commits", value: 1200, suffix: "+" },
+  { label: "Coffee", value: 999, suffix: "+" },
+];
+
+export const skillGroups = [
+  { title: "AI / ML", items: ["PyTorch", "TensorFlow", "scikit-learn", "Hugging Face", "LangChain", "OpenCV"] },
+  { title: "Languages", items: ["Python", "TypeScript", "JavaScript", "C++", "SQL", "Rust"] },
+  { title: "Frontend", items: ["React", "Next.js", "Three.js", "R3F", "Tailwind CSS", "Framer Motion"] },
+  { title: "Backend & Cloud", items: ["Node.js", "FastAPI", "PostgreSQL", "Docker", "AWS", "Supabase"] },
+];
+
+export const projects = [
+  {
+    title: "DevCity AI",
+    blurb: "Smart city AI platform using YOLOv8 and OpenCV for real-time traffic analysis and urban monitoring.",
+    tags: ["Python", "YOLOv8", "OpenCV", "Flask", "MongoDB"],
+    link: "#",
+  },
+  {
+    title: "NeuroFunds AI",
+    blurb: "AI-powered finance platform using Gemini AI for budgeting and personalized financial insights.",
+    tags: ["Next.js", "Prisma", "Supabase", "Clerk", "Gemini AI"],
+    link: "#",
+  },
+  {
+    title: "Pathfinder AI",
+    blurb: "AI-driven career roadmap platform providing personalized learning paths and skill recommendations.",
+    tags: ["AI", "LLMs", "Next.js"],
+    link: "#",
+  },
+  {
+    title: "Neural Vision Studio",
+    blurb: "Real-time computer vision playground with on-device transformer inference.",
+    tags: ["PyTorch", "WebGL", "ONNX"],
+    link: "#",
+  },
+  {
+    title: "LLM Knowledge Mesh",
+    blurb: "Retrieval-augmented chat over private docs with hybrid vector + graph search.",
+    tags: ["LangChain", "pgvector", "FastAPI"],
+    link: "#",
+  },
+];
+
 export interface ExperienceType {
   title: string;
   company_name: string;

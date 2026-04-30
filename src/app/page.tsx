@@ -1,6 +1,7 @@
-import AboutSection from "@/components/AboutSection";
+import AboutOverlay from "@/components/AboutOverlay";
 import EmailSection from "@/components/EmailSection";
-import Experience from "@/components/Experience";
+import SkillsSection from "@/components/SkillsSection";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
 import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import Slider from "@/components/Slider";
@@ -10,8 +11,7 @@ import TechMarquee from "@/components/TechMarquee";
 import StatsSection from "@/components/StatsSection";
 export default function Home() {
   return (
-    <div className="dark:bg-[#060606] bg-white dark:text-white text-black relative min-h-screen overflow-x-hidden selection:bg-violet-500/30 selection:text-violet-900 dark:selection:text-violet-100">
-      <InteractiveBackground />
+    <div className="text-black dark:text-white relative min-h-screen overflow-x-hidden selection:bg-violet-500/30 selection:text-violet-900 dark:selection:text-violet-100 bg-transparent">
       
       <div className="container mt-24 mx-auto px-4 sm:px-8 lg:px-12 py-4">
         <HeroSection />
@@ -22,14 +22,17 @@ export default function Home() {
       {/* Full width marquee */}
       <TechMarquee />
 
+      <SkillsSection />
+
       <div className="container mx-auto px-4 sm:px-8 lg:px-12 py-4">
-        <AboutSection />
-        <Experience />
+        <ExperienceTimeline />
         <ProjectsSection />
         <Slider />
         <EmailSection />
         <VolunteerPage />
       </div>
+
+      <AboutOverlay />
     </div>
   );
 }

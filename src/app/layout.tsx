@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import SceneWrapper from "@/components/3d/SceneWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,10 +39,13 @@ export default function RootLayout({
          enableSystem
          disableTransitionOnChange
        >
-        {children}
-        <Navbar />
+        <SceneWrapper />
+        <div className="relative z-10 w-full min-h-screen">
+          {children}
+          <Navbar />
+          <Footer />
+        </div>
         </ThemeProvider>
-        <Footer/>
       </body>
     </html>
   );
