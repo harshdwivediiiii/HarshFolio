@@ -62,6 +62,7 @@ export default function SkillsNetwork() {
         return (
           <group key={node.name}>
             {/* Connecting line */}
+            {/* @ts-expect-error - R3F line type conflict with SVG line */}
             <line geometry={lineGeometry}>
               <lineBasicMaterial color={isHovered ? "#00FFFF" : "#8A2BE2"} transparent opacity={isHovered ? 0.8 : 0.2} linewidth={1} />
             </line>

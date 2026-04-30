@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { profile, stats } from "@/constants/Index";
 import { useCounterAnimation } from "@/hooks/useCounterAnimation";

@@ -2,8 +2,7 @@
 
 import React, { Suspense } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FileText } from "lucide-react";
@@ -38,26 +37,6 @@ const itemVariants = {
 
 const HeroSection: React.FC = () => {
   const { setResumeOpen } = useAppStore();
-
-  // Parallax tilt effect for the Avatar
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  const rotateX = useTransform(mouseY, [-200, 200], [15, -15]);
-  const rotateY = useTransform(mouseX, [-200, 200], [-15, 15]);
 
   return (
     <section className="relative flex min-h-[calc(100vh-100px)] flex-col-reverse items-center justify-between z-10 lg:flex-row gap-12 lg:gap-0">

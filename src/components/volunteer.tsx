@@ -8,7 +8,6 @@ import * as THREE from "three";
 
 function NetworkLines() {
   const groupRef = useRef<THREE.Group>(null!);
-  const lineRef = useRef<THREE.LineSegments>(null!);
 
   const lineCount = 30;
 

@@ -7,7 +7,6 @@ import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import Slider from "@/components/gallery";
 import VolunteerPage from "@/components/volunteer";
-import InteractiveBackground from "@/components/InteractiveBackground";
 import TechMarquee from "@/components/TechMarquee";
 import StatsSection from "@/components/StatsSection";
 export default function Home() {
