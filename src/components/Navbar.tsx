@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { Menu, Info, Folder, Mail, HomeIcon, Briefcase, Activity, Heart, X } from "lucide-react";
+import { Menu, Info, Folder, Mail, HomeIcon, Briefcase, Activity, Heart, X, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/store/useAppStore";
 
@@ -15,7 +15,7 @@ type NavLinkItem = {
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { setAboutOpen } = useAppStore();
+  const { setAboutOpen, setResumeOpen } = useAppStore();
 
   const navLinks: NavLinkItem[] = [
     { title: "Home", path: "#home", icon: <HomeIcon className="w-4 h-4" /> },
@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
         </Link>
         
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
+        <div className="hidden lg:flex items-center space-x-1 xl:space-x-4">
           {navLinks.map((link, index) => {
             if (link.action) {
               return (
@@ -76,10 +76,29 @@ const Navbar: React.FC = () => {
               </Link>
             )
           })}
+
+          {/* Resume Button */}
+          <button
+            onClick={() => setResumeOpen(true)}
+            className="group relative flex items-center gap-2 px-4 py-2 ml-4 bg-cyan-500/10 border border-cyan-500/50 rounded-lg text-cyan-400 font-mono text-sm transition-all duration-300 hover:bg-cyan-500 hover:text-black shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_20px_rgba(0,255,255,0.6)] hover:-translate-y-0.5"
+          >
+            <FileText className="w-4 h-4" />
+            <span>RESUME</span>
+            <div className="absolute inset-0 rounded-lg border border-cyan-400/0 group-hover:border-cyan-400/50 group-hover:animate-pulse" />
+          </button>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden">
+        <div className="lg:hidden flex items-center gap-4">
+          {/* Mobile Resume Button */}
+          <button
+            onClick={() => setResumeOpen(true)}
+            className="flex items-center gap-2 px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/50 rounded-lg text-cyan-400 font-mono text-xs transition-all duration-300 hover:bg-cyan-500 hover:text-black shadow-[0_0_10px_rgba(0,255,255,0.2)]"
+          >
+            <FileText className="w-3 h-3" />
+            <span>RESUME</span>
+          </button>
+
           <Button 
             variant="ghost" 
             size="icon" 
@@ -93,7 +112,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full glass-neon border-t border-cyan-500/20 py-4 flex flex-col px-4 space-y-4 md:hidden">
+        <div className="absolute top-full left-0 w-full glass-neon border-t border-cyan-500/20 py-4 flex flex-col px-4 space-y-4 lg:hidden">
           {navLinks.map((link, index) => {
             if (link.action) {
               return (

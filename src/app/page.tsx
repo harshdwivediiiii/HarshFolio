@@ -1,4 +1,5 @@
 import AboutOverlay from "@/components/AboutOverlay";
+import ResumeModal from "@/components/ResumeModal";
 import EmailSection from "@/components/EmailSection";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
@@ -47,6 +48,7 @@ export default function Home() {
       </div>
 
       <AboutOverlay />
+      <ResumeModal />
     </div>
   );
 }

@@ -2,10 +2,13 @@
 
 import React, { Suspense } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FileText } from "lucide-react";
 import GlitchText from "@/components/ui/GlitchText";
+import { useAppStore } from "@/store/useAppStore";
 import { Canvas } from "@react-three/fiber";
 import BrainModel from "@/components/3d/BrainModel";
 
@@ -22,8 +25,8 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 50, opacity: 0 },
-  visible: { 
-    y: 0, 
+  visible: {
+    y: 0,
     opacity: 1,
     transition: {
       type: "spring",
@@ -34,9 +37,31 @@ const itemVariants = {
 };
 
 const HeroSection: React.FC = () => {
+  const { setResumeOpen } = useAppStore();
+
+  // Parallax tilt effect for the Avatar
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  const rotateX = useTransform(mouseY, [-200, 200], [15, -15]);
+  const rotateY = useTransform(mouseX, [-200, 200], [-15, 15]);
+
   return (
-    <section className="relative flex min-h-[calc(100vh-100px)] flex-col-reverse items-center justify-between z-10 lg:flex-row">
-      
+    <section className="relative flex min-h-[calc(100vh-100px)] flex-col-reverse items-center justify-between z-10 lg:flex-row gap-12 lg:gap-0">
+
       {/* Left Content */}
       <motion.div
         variants={containerVariants}
@@ -59,7 +84,7 @@ const HeroSection: React.FC = () => {
               sequence={[
                 "AI/ML Engineer", 1500,
                 "Full-Stack Developer", 1500,
-                "Open Source Contributor", 1500,
+                "Cyberpunk Enthusiast", 1500,
               ]}
               wrapper="span"
               speed={50}
@@ -70,30 +95,29 @@ const HeroSection: React.FC = () => {
           </span>
         </motion.div>
 
-        <motion.p 
+        <motion.p
           variants={itemVariants}
           className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl lg:mx-0 backdrop-blur-sm bg-black/20 p-4 rounded-xl border border-white/5"
         >
           Building intelligent systems and immersive interfaces at the intersection of machine learning and modern web. Transforming ideas into scalable solutions.
         </motion.p>
 
-        <motion.div variants={itemVariants} className="flex flex-col justify-center gap-6 sm:flex-row lg:justify-start">
-          <Link href="#projects">
+        <motion.div variants={itemVariants} className="flex flex-col justify-center gap-6 sm:flex-row lg:justify-start flex-wrap">
+          <button
+            onClick={() => setResumeOpen(true)}
+            className="group relative rounded-full border border-pink-500 bg-pink-500/10 px-8 py-4 text-lg font-mono text-pink-400 transition-all backdrop-blur-md w-full sm:w-auto hover:-translate-y-1 shadow-[0_0_15px_rgba(255,0,255,0.3)] hover:shadow-[0_0_30px_rgba(255,0,255,0.6)] flex items-center justify-center gap-2 overflow-hidden"
+          >
+            <span className="absolute inset-0 w-0 bg-pink-500/20 transition-all duration-300 ease-out group-hover:w-full" />
+            <FileText className="w-5 h-5 relative z-10" />
+            <span className="relative z-10 uppercase font-bold tracking-wider">View Resume</span>
+          </button>
+          <Link href="#projects" className="w-full sm:w-auto">
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 255, 255, 0.7)", y: -5 }}
               whileTap={{ scale: 0.95 }}
-              className="rounded-full border border-cyan-400 bg-cyan-400/10 px-8 py-4 text-lg font-mono text-cyan-400 transition-all backdrop-blur-md w-full sm:w-auto"
+              className="rounded-full border border-cyan-400 bg-cyan-400/10 px-8 py-4 text-lg font-mono text-cyan-400 transition-all backdrop-blur-md w-full"
             >
               View Projects
-            </motion.button>
-          </Link>
-          <Link href="#contact">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(138, 43, 226, 0.7)", y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-full border border-purple-500 bg-purple-500/10 px-8 py-4 text-lg font-mono text-purple-400 transition-all backdrop-blur-md w-full sm:w-auto"
-            >
-              Contact Me
             </motion.button>
           </Link>
         </motion.div>
